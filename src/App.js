@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import React, { useState } from 'react';
-import { auth } from "./firebase-config";
+import { auth, provider } from "./firebase-config";
 
 
 function App() {
@@ -9,6 +9,17 @@ function App() {
   const [loginPassword, setLoginPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+
+
+  const handleGoogleLogin = async () => {
+    try {
+      const user = await signInWithPopup(auth, provider);
+      console.log(user);
+
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -75,6 +86,12 @@ function App() {
             <button type='submit' className='px-10 py-2 bg-yellow-300 rounded-lg'>Register</button>
           </div>
         </form>
+
+        <div>
+          <div onClick={handleGoogleLogin}>
+            <button>Google</button>
+          </div>
+        </div>
       </div>
     </div>
   )
