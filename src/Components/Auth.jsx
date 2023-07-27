@@ -95,6 +95,7 @@ function Auth() {
                             :
                             <form onSubmit={pageType ? handleRegister : handleLogin}
                                 className='bg-white md:w-1/2 h-full rounded-b-3xl md:rounded-b-none md:rounded-tr-[40px] md:rounded-br-[40px] flex flex-col justify-center p-10 xl:p-24'>
+                                <p className='text-3xl font-semibold text-center pb-4'>{pageType ? 'Register' : 'Login'}</p>
                                 <label className='text-slate-400'>Username or email</label>
                                 <input type='text' className='bg-slate-200 py-3 px-4 rounded-xl text-base text-slate-500'
                                     onChange={(e) => setEmail(e.target.value)} value={email} />
